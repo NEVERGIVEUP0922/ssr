@@ -12,11 +12,13 @@ function index(opt) {
             <h1>hello {opt.title} {count}</h1>
             <button onClick={() => setCount(count + 1)}>累加</button>
             <hr />
-            <ol>
-                {opt.list.map(item => {
-                    <li key={item.code}>{item.name}</li>
-                })}
-            </ol>
+            <ul>
+                {
+                    opt.list.map(v => {
+                        return <li key={v.code}>{v.name}</li>
+                    })
+                }
+            </ul>
         </div>
     )
 }

@@ -1,18 +1,18 @@
-import React from 'react'
-import reactDom from 'react-dom'
-import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../src/store/store';
 import App from '../src/app'
-import store from '../src/store/store'
 
 const page = (
 	<Provider store={store}>
 		<BrowserRouter>
-			<App title="ssr-同构" />
+		<App title="ssr"></App>
 		</BrowserRouter>
 	</Provider>
 )
-reactDom.hydrate(
+ReactDOM.hydrate(
 	page,
 	document.getElementById('root')
 )

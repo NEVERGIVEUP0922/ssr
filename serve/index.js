@@ -16,8 +16,8 @@ app.use(statis(process.cwd() + '/public'))
 routers.get('*', ctx => {
     const text = renderToString(
         <Provider store={store}>
-            <StaticRouter location={ctx.req.url}>
-                <App title="ssr-同构"></App>
+            <StaticRouter location={ctx.url}>
+                <App title="ssr"></App>
             </StaticRouter>
         </Provider>
     )
@@ -36,7 +36,7 @@ routers.get('*', ctx => {
     </html>
 	`
 })
-app.use(routers.routes())
+app.use(routers.routes()).use(routers.allowedMethods())
 app.listen(port, () => {
     console.log('启动成功' + port)
 })

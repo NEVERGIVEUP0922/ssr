@@ -1,13 +1,13 @@
-import KoaServer from 'koa'
-import Router from 'koa-router'
+const KoaServer = require('koa') 
+const Router = require('koa-router') 
+const cors = require('@koa/cors');
 
 const port = 9090
 const app = new KoaServer()
 const routers = new Router()
+app.use(cors())
+
 routers.get('/api/list', ctx => {
-    ctx.headers('Access-Control-Allow-Origin', '*')
-    ctx.headers('Access-Control-Allow-Methods', 'GET,POST')
-    ctx.headers('Content-Type', 'application/json;charset=utf-8')
     ctx.body = {
         code: 0,
         list: [
