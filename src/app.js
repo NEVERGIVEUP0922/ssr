@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
+import { Route } from 'react-router-dom'
+import Index from './containers/index.js'
+import About from './containers/about.js'
 
+// console.log('8888',index,about)
 function App(opt) {
 	let [count, setCount] = useState(1)
 	return (
 		<div>
-			<h1>hello {opt.title} {count}</h1>
-			<button onClick={() => setCount(count + 1)}>累加</button>
+			<Route path="/" exact component={Index} ></Route>
+			<Route path="/about" exact component={About}></Route>
 		</div>
 	)
 }
-export default <App title="react-ssr"></App>
+export default App 
+
