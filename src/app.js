@@ -4,14 +4,28 @@ import Index from './containers/index.js'
 import About from './containers/about.js'
 
 // console.log('8888',index,about)
-function App(opt) {
-	let [count, setCount] = useState(1)
-	return (
-		<div>
-			<Route path="/" exact component={Index} ></Route>
-			<Route path="/about" exact component={About}></Route>
-		</div>
-	)
-}
-export default App 
+// function App(opt) {
+// 	let [count, setCount] = useState(1)
+// 	return (
+// 		<div>
+// 			<Route path="/" exact component={Index} ></Route>
+// 			<Route path="/about" exact component={About}></Route>
+// 		</div>
+// 	)
+// }
+export default[
+	{
+		path:"/",
+		component:Index,
+		exact:true,
+		key:'index'
+	},
+	{
+		path:"/about",
+		component:About,
+		exact:true,
+		key:'about'
+	}
+]
+
 

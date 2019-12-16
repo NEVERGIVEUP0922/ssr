@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import Router from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../src/store/store';
-import App from '../src/app'
+import { getClientStore } from '../src/store/store';
+import routes from '../src/app'
 
 const page = (
-	<Provider store={store}>
+	<Provider store={getClientStore()}>
 		<BrowserRouter>
-		<App title="ssr"></App>
+			{
+				routes.map(route => {
+					return <Route {...route}></Route>
+				})
+			}
 		</BrowserRouter>
 	</Provider>
 )
+console.log(999,page)
 ReactDOM.hydrate(
 	page,
 	document.getElementById('root')

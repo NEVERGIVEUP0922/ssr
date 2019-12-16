@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { getCourseList } from '../store/index'
 
 function index(opt) {
-    useEffect(() => {
-        opt.getCourseList()
-    }, [])
+    if (!opt.list.length)
+        useEffect(() => {
+            opt.getCourseList()
+        }, [])
     let [count, setCount] = useState(1)
     return (
         <div>
@@ -21,5 +22,8 @@ function index(opt) {
             </ul>
         </div>
     )
+}
+index.loadData = (store) => {
+    return store.dispatch(getCourseList())
 }
 export default connect(state => ({ list: state.index.list }), { getCourseList })(index)

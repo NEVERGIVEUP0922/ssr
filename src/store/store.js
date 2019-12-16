@@ -16,6 +16,9 @@ const reducer = combineReducers({
 });
 
 //create store
-const store = createStore(reducer, applyMiddleware(thunk));
+export const getServeStore = () => createStore(reducer, applyMiddleware(thunk));
 
-export default store;
+export const getClientStore = () => {
+    const defaultData = window._defaultData ? window._defaultData : {}
+    return createStore(reducer, defaultData, applyMiddleware(thunk));
+};
